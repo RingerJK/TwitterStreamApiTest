@@ -1,0 +1,75 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.ringerjk.twitterapitestapp"
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "URL_ENDPOINT", "\"https://stream.twitter.com/1.1/\""
+        }
+        debug{
+            buildConfigField "String", "URL_ENDPOINT", "\"https://stream.twitter.com/1.1/\""
+        }
+    }
+
+
+}
+
+ext{
+    andoidSupportVersion = "27.1.1"
+    retrofitVersion = "2.4.0"
+    daggerVersion = "2.16"
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.android.support:appcompat-v7:$andoidSupportVersion"
+    implementation "com.android.support:recyclerview-v7:$andoidSupportVersion"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation 'org.jetbrains.kotlin:kotlin-reflect:1.2.41'
+    // rx
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    // twitter
+    implementation 'com.twitter.sdk.android:twitter-core:3.1.1'
+    // retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    // oauth1 sign
+    implementation 'se.akerfeldt:okhttp-signpost:1.1.0'
+    implementation 'oauth.signpost:signpost-core:1.2.1.2'
+    // network inspector
+    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.0'
+    // di
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
+    // logger
+    implementation 'com.jakewharton.timber:timber:4.7.0'
+    // image loader
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    kapt 'com.github.bumptech.glide:compiler:4.7.1'
+
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:2.18.3'
+    androidTestCompile 'org.mockito:mockito-android:2.13.0'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}

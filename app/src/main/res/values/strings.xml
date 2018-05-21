@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TwitterApiTestApp</string>
+
+    <string name="error_unauthorized">You\'re unauthorized</string>
+    <string name="error_page_not_found">Page wasn\'t fount</string>
+    <string name="error_internal">Internal error. Please try later</string>
+    <string name="error_timeout">Timeout exception. Please try again</string>
+</resources>

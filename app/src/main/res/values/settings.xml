@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="twitter_api_consume_key">EX4ouwba45pdqQ2Ot2NjphChy</string>
+    <string name="twitter_api_consume_secret">Bl1vMKR4y0GujMAIczCPc1DVSsJZSLygGBA7z9Ohi6WV8r4xYf</string>
+    <!--for particular user-->
+    <!--<string name="twitter_api_access_token">995727597907701760-fZW8h5fRGt5xgk98GQKOhnWITR0rWX1</string>-->
+    <!--<string name="twitter_api_access_token_secret">KT45Q472aQZoxBHhmCCTMq6mjlNNoY0iMoOcyDYwuUh8b</string>-->
+</resources>
