@@ -6,12 +6,15 @@ import retrofit2.HttpException
 
 class NetworkError(private val exception: HttpException) : Throwable(exception) {
 
+	val isUnautorized: Boolean
+		get() = exception.code() == 401
+
 	@StringRes
 	fun getMessage(): Int =
-		when (exception.code()) {
-			401 -> R.string.error_unauthorized
-			404 -> R.string.error_page_not_found
-			408 -> R.string.error_timeout
-			else -> R.string.error_internal
-		}
+			when (exception.code()) {
+				401 -> R.string.error_unauthorized
+				404 -> R.string.error_page_not_found
+				408 -> R.string.error_timeout
+				else -> R.string.error_internal
+			}
 }

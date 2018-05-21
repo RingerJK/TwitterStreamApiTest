@@ -5,6 +5,8 @@ import android.support.annotation.StringRes
 interface Mvp {
 	interface View{
 		fun showMessage(@StringRes res: Int)
+
+		fun finishedActivity()
 	}
 
 	interface Presenter<V: Mvp.View>{

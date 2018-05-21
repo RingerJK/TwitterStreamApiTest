@@ -44,5 +44,8 @@ abstract class BasePresenter<T : Mvp.View> : Mvp.Presenter<T> {
 
 	protected fun handelError(networkError: NetworkError){
 		view?.showMessage(networkError.getMessage())
+		if (networkError.isUnautorized){
+			view?.finishedActivity()
+		}
 	}
 }

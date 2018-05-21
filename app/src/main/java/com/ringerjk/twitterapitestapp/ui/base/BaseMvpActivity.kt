@@ -37,4 +37,8 @@ abstract class BaseMvpActivity<V : Mvp.View, P : Mvp.Presenter<V>> : BaseActivit
 	override fun showMessage(res: Int){
 		Toast.makeText(this, res, Toast.LENGTH_SHORT).show()
 	}
+
+	override fun finishedActivity() {
+		finish()
+	}
 }
