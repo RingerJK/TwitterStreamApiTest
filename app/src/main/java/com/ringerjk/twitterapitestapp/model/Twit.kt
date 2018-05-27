@@ -13,7 +13,7 @@ data class Twit(
 	val text: String,
 	val user: User
 ) : Validator {
-	override fun verify() {
+	override fun verify()  {
 		if (id == null) throw FieldValidationException("id")
 		if (createdAt == null) throw FieldValidationException("createdAt")
 		if (text == null) throw FieldValidationException("text")

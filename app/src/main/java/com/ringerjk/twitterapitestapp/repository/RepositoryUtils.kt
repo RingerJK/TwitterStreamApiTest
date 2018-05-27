@@ -12,28 +12,25 @@ class RepositoryUtils(private val gson: Gson) {
 		return Observable.create<T> {
 			var sourceCompleted = false
 			try {
-				while (!source.exhausted()) {
-					val str = source.readUtf8Line()
-					val obj = gson.fromJson<T>(str, clazz)
-					Timber.d(obj.toString())
-					it.onNext(obj)
+				if (!it.isDisposed) {
+					while (!source.exhausted()) {
+						val str = source.readUtf8Line()
+						val obj = gson.fromJson<T>(str, clazz)
+						Timber.d(obj.toString())
+						it.onNext(obj)
+					}
+					it.onComplete()
 				}
 			} catch (e: IOException) {
-				if (e.message == "Socket is closed") {
+				if (e.message == "Socket closed") {
 					Timber.e(e.message)
 					sourceCompleted = true
-//					it.onComplete()
+					it.onComplete()
 				} else {
 					Timber.e(e)
-					throw e
+					it.onError(e)
 				}
-			} finally {
-//
 			}
-            Timber.d("sourceCompleted = $sourceCompleted")
-//            if (!sourceCompleted) {
-//                it.onComplete()
-//            }
 		}
 	}
 }
